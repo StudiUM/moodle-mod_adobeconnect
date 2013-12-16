@@ -57,7 +57,7 @@ class mod_adobeconnect_mod_form extends moodleform_mod {
         $mform->addElement('header', 'adobeconnectfieldset', get_string('adobeconnectfieldset', 'adobeconnect'));
 
         // Meeting URL.
-        $attributes=array('size'=>'20');
+        $attributes = array('size'=>'20');
         $mform->addElement('text', 'meeturl', get_string('meeturl', 'adobeconnect'), $attributes);
         $mform->setType('meeturl', PARAM_PATH);
         $mform->addHelpButton('meeturl', 'meeturl', 'adobeconnect');
@@ -88,6 +88,11 @@ class mod_adobeconnect_mod_form extends moodleform_mod {
         $mform->addElement('date_time_selector', 'starttime', get_string('starttime', 'adobeconnect'));
         $mform->addElement('date_time_selector', 'endtime', get_string('endtime', 'adobeconnect'));
         $mform->setDefault('endtime', strtotime('+2 hours'));
+
+        // Auto-add course participants as meeting participants when meeting ends.
+        $autojoinaftermeeting = array(0 => get_string('checkboxno', 'admin'), 1 => get_string('checkboxyes', 'admin'));
+        $mform->addElement('select', 'autojoinaftermeeting', get_string('autojoinaftermeeting', 'adobeconnect'),
+                $autojoinaftermeeting);
 
         // Add standard elements, common to all modules.
         $this->standard_coursemodule_elements(array('groups' => true));

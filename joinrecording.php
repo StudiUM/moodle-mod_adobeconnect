@@ -124,6 +124,21 @@ if (!$usrcanjoin) {
     if (empty($meetscoid->meetingscoid)) {
         notice(get_string('unableretrdetails', 'adobeconnect'), $url);
     } else {
+
+        // Assign participant role if meeting has ended and user has student role in course where meeting appears.
+        if ($adobeconnect->autojoinaftermeeting == 1 ) {
+            if ($adobeconnect->endtime <= time() && is_enrolled($context, $USER->id) ) {
+                if (!has_capability('mod/adobeconnect:meetingparticipant', $context) &&
+                            !has_capability('mod/adobeconnect:adobeconnectpresenter', $context) &&
+                            !has_capability('mod/adobeconnect:meetinghost', $context)) {
+                    $roleid = $DB->get_field('role', 'id', array('shortname'=>'adobeconnectparticipant'));
+                    if ($roleid != false) {
+                        role_assign($roleid, $USER->id, $context->id);
+                    }
+                }
+            }
+        }
+
         // Create user in Adobe Connect with his permission (role) to the meeting.
         if ($userprincipalid = aconnect_create_user($aconnect, $usrobj)) {
             $userrole = aconnect_assign_user_from_moodle_role($aconnect, $userprincipalid, $usrobj->id, $context,

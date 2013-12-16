@@ -81,6 +81,7 @@ host or presenter roles has already joined th meeting.
 If the meeting has support for separate groups at least 1 user in each group, who is
 to be present in the meeting, should have either the host or presenter role.
 </p>';
+$string['autojoinaftermeeting'] = 'Allow non-participant students to view recordings after meeting';
 $string['meettemplates'] = 'Meeting Templates';
 $string['meettemplates_help'] = '<p>A meeting room template creates meeting with a custom layout for the meeting room.</p>';
 $string['meeturl'] = 'Meeting URL';

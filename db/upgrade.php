@@ -98,5 +98,18 @@ function xmldb_adobeconnect_upgrade($oldversion=0) {
 
     }
 
+    // Adds 'autojoinaftermeeting' field to adobeconnect table.
+    if ($oldversion < 2013121300) {
+        $table = new xmldb_table('adobeconnect');
+        $field = new xmldb_field('autojoinaftermeeting', XMLDB_TYPE_INTEGER, '10', true, true, null, 0, 'meetingpublic');
+
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Adobeconnect savepoint reached.
+        upgrade_mod_savepoint(true, 2013121300, 'adobeconnect');
+    }
+
     return true;
 }

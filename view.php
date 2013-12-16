@@ -405,6 +405,11 @@ if (!$adobeconnect->meetingpublic) {
         has_capability('mod/adobeconnect:meetingparticipant', $context, $usrobj->id)) {
         $showrecordings = true;
     }
+    // Check if auto-join is turned on.
+    else if ($adobeconnect->autojoinaftermeeting == 1 && $adobeconnect->endtime <= time()) {
+        $showrecordings = true;
+    }
+
 } else {
     // Check group mode and group membership.
     $showrecordings = true;
