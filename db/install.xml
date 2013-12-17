@@ -17,8 +17,8 @@
         <FIELD NAME="starttime" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="Meeting start time" PREVIOUS="meeturl" NEXT="endtime"/>
         <FIELD NAME="endtime" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="Meeting start time" PREVIOUS="starttime" NEXT="meetingpublic"/>
         <FIELD NAME="meetingpublic" TYPE="int" LENGTH="1" NOTNULL="false" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="Meetings can be public or non-public" PREVIOUS="endtime" NEXT="autojoinaftermeeting"/>
-        <FIELD NAME="autojoinaftermeeting" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="Subscribe course participants as meeting participants after meeting ends to allow to view recordings" PREVIOUS="autojoinaftermeeting" NEXT="timecreated"/>
-        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="meetingpublic" NEXT="timemodified"/>
+        <FIELD NAME="autojoinaftermeeting" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="Subscribe course participants as meeting participants after meeting ends to allow to view recordings" PREVIOUS="meetingpublic" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="autojoinaftermeeting" NEXT="timemodified"/>
         <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="timecreated"/>
       </FIELDS>
       <KEYS>
