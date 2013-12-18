@@ -398,15 +398,11 @@ echo '<br />';
 $showrecordings = false;
 // Check if meeting is private, if so check the user's capability.  If public show recorded meetings.
 if (!$adobeconnect->meetingpublic) {
-
-    // Check capabilities.
-    if (has_capability('mod/adobeconnect:meetinghost', $context, $usrobj->id) or
-        has_capability('mod/adobeconnect:meetingpresenter', $context, $usrobj->id) or
-        has_capability('mod/adobeconnect:meetingparticipant', $context, $usrobj->id)) {
-        $showrecordings = true;
-    }
-    // Check if auto-join is turned on.
-    else if ($adobeconnect->autojoinaftermeeting == 1 && $adobeconnect->endtime <= time()) {
+    $hascapability = (has_capability('mod/adobeconnect:meetinghost', $context, $usrobj->id) or
+            has_capability('mod/adobeconnect:meetingpresenter', $context, $usrobj->id) or
+            has_capability('mod/adobeconnect:meetingparticipant', $context, $usrobj->id));
+    $autojoinison = ($adobeconnect->autojoinaftermeeting == 1 && $adobeconnect->endtime <= time());
+    if ($hascapability && $autojoinison) {
         $showrecordings = true;
     }
 

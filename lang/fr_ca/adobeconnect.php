@@ -77,7 +77,7 @@ ayant le rôle de participant ne pourront entrer si ce n\'est le cas.
 <p>
 Si la réunion supporte les groupes séparés, alors au moins un utilisateur dans chacun des groupes devrait avoir le rôle d\'hôte ou de présentateur.
 </p>';
-$string['autojoinaftermeeting'] = 'Permettre aux étudiants de voir les enregistrement après la réunion';
+$string['autojoinaftermeeting'] = 'Permettre aux étudiants de voir les enregistrements après la réunion';
 $string['meettemplates'] = 'Modèle de réunion';
 $string['meettemplates_help'] = '<p>Un modèle de réunion crée une réunion avec une mise en page personnalisée dans la salle.</p>';
 $string['meeturl'] = 'URL de la réunion';

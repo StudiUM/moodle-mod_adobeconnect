@@ -126,13 +126,13 @@ if (!$usrcanjoin) {
     } else {
 
         // Assign participant role if meeting has ended and user has student role in course where meeting appears.
-        if ($adobeconnect->autojoinaftermeeting == 1 ) {
+        if ($adobeconnect->autojoinaftermeeting) {
             if ($adobeconnect->endtime <= time() && is_enrolled($context, $USER->id) ) {
                 if (!has_capability('mod/adobeconnect:meetingparticipant', $context) &&
-                            !has_capability('mod/adobeconnect:adobeconnectpresenter', $context) &&
-                            !has_capability('mod/adobeconnect:meetinghost', $context)) {
-                    $roleid = $DB->get_field('role', 'id', array('shortname'=>'adobeconnectparticipant'));
-                    if ($roleid != false) {
+                        !has_capability('mod/adobeconnect:adobeconnectpresenter', $context) &&
+                        !has_capability('mod/adobeconnect:meetinghost', $context)) {
+                    $roleid = $DB->get_field('role', 'id', array( 'shortname'=>'adobeconnectparticipant' ));
+                    if (!$roleid) {
                         role_assign($roleid, $USER->id, $context->id);
                     }
                 }
