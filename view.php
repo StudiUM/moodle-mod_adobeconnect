@@ -401,8 +401,8 @@ if (!$adobeconnect->meetingpublic) {
     $hascapability = (has_capability('mod/adobeconnect:meetinghost', $context, $usrobj->id) or
             has_capability('mod/adobeconnect:meetingpresenter', $context, $usrobj->id) or
             has_capability('mod/adobeconnect:meetingparticipant', $context, $usrobj->id));
-    $autojoinison = ($adobeconnect->autojoinaftermeeting == 1 && $adobeconnect->endtime <= time());
-    if ($hascapability && $autojoinison) {
+    $autojoinison = ($adobeconnect->autojoinaftermeeting && $adobeconnect->endtime <= time());
+    if ($hascapability or $autojoinison) {
         $showrecordings = true;
     }
 
